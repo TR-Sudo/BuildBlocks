@@ -5,14 +5,17 @@
     "watch": "webpack --watch --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack",
-    "build-dev": "webpack --mode development"
+    "build-dev": "webpack --mode development",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.2",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"

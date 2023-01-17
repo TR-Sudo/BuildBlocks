@@ -1,5 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 let mode="development";
 let target="web";
@@ -10,13 +12,19 @@ module.exports={
     mode:mode,
     target:target,
     output:{
+        path: path.resolve(__dirname,"dist"),
         assetModuleFilename:"images/[hash][ext][query]"
     },
     module:{
         rules:[
             {
                 test:/\.(png|jpe?g|gif)$/i,
-                type:"asset",
+                type:"asset", // best default for assets
+                parser:{
+                    dataUrlCondition:{
+                        maxSize:30*1024 // 30kb
+                    },
+                }
             },
             {
                 test:/\.css$/i,
@@ -39,7 +47,9 @@ module.exports={
         ]
     },
     plugins:[
-        new MiniCssExtractPlugin()
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin(),
+        new HTMLWebpackPlugin({template:"./src/index.html"}),
     ],
     resolve:{
         extensions:[".js",".jsx"]
