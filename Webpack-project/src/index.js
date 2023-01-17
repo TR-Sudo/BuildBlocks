@@ -3,4 +3,10 @@ const elvenShieldRecipe = {
     ironIngot: 1,
     refineMoonstone: 4
 }
-console.log(elvenShieldRecipe.leatherStrips);
+const elvenGauntletsRecipe={
+    ...elvenShieldRecipe,
+    leather:1,
+    refineMoonstone:4,
+}
+console.log(elvenShieldRecipe);
+console.log(elvenGauntletsRecipe);
