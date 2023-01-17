@@ -3,3 +3,11 @@ body{
     background-color: black;
     color: red;
 }
+.Hero{
+    background-image: url(../images/hero.jpg);
+    background-size: cover;
+    color: green;
+    background-position: center;
+    min-height: 300px;
+    width: 100%;
+}

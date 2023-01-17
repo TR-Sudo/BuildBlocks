@@ -2,16 +2,32 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 let mode="development";
+let target="web";
 if(process.env.NODE_ENV==="production"){
     mode="production";
 }
 module.exports={
     mode:mode,
+    target:target,
+    output:{
+        assetModuleFilename:"images/[hash][ext][query]"
+    },
     module:{
         rules:[
             {
+                test:/\.(png|jpe?g|gif)$/i,
+                type:"asset",
+            },
+            {
                 test:/\.css$/i,
-                use:[MiniCssExtractPlugin.loader,"css-loader"],
+                use:[
+                    {
+                        loader:MiniCssExtractPlugin.loader,
+                        options:{publicPath:""}
+                    },
+                    "css-loader"
+                    
+                    ],
             },
             {
                 test:/\.jsx?$/,
